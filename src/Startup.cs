@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
+using System.Reflection;
 
 namespace CoreCodeCamp
 {
@@ -13,6 +15,8 @@ namespace CoreCodeCamp
         {
             services.AddDbContext<CampContext>();
             services.AddScoped<ICampRepository, CampRepository>();
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddMvc()
               .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);

@@ -1,6 +1,0 @@
-C:\Users\HZJ0RQ\Source\Repos\CoreApiFundamentals\src\obj\Debug\net6.0\CoreCodeCamp.csproj.AssemblyReference.cache
-C:\Users\HZJ0RQ\Source\Repos\CoreApiFundamentals\src\obj\Debug\net6.0\CoreCodeCamp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\HZJ0RQ\Source\Repos\CoreApiFundamentals\src\obj\Debug\net6.0\CoreCodeCamp.AssemblyInfoInputs.cache
-C:\Users\HZJ0RQ\Source\Repos\CoreApiFundamentals\src\obj\Debug\net6.0\CoreCodeCamp.AssemblyInfo.cs
-C:\Users\HZJ0RQ\Source\Repos\CoreApiFundamentals\src\obj\Debug\net6.0\CoreCodeCamp.csproj.CoreCompileInputs.cache
-C:\Users\HZJ0RQ\Source\Repos\CoreApiFundamentals\src\obj\Debug\net6.0\CoreCodeCamp.MvcApplicationPartsAssemblyInfo.cache

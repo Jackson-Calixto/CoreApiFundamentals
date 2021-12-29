@@ -7,7 +7,7 @@ namespace CoreCodeCamp.Controllers
     {
         public object Get()
         {
-            return new {Moniker = "ATL2018"};
+            return new {Moniker = "ATL2018", Name = "Atlanta Code Camp"};
         }
     }
 }

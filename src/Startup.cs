@@ -18,7 +18,7 @@ namespace CoreCodeCamp
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            services.AddMvc()
+            services.AddMvc() 
               .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 

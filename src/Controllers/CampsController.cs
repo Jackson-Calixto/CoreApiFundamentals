@@ -3,6 +3,8 @@ using CoreCodeCamp.Data;
 using CoreCodeCamp.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CoreCodeCamp.Controllers
@@ -19,6 +21,8 @@ namespace CoreCodeCamp.Controllers
             _mapper = mapper;
         }
 
+        // GET http://localhost:6600/api/camps
+        // GET http://localhost:6600/api/camps?includeTalks=true
         [HttpGet]
         public async Task<ActionResult<CampModel[]>> Get(bool includeTalks = false)
         {
@@ -34,6 +38,7 @@ namespace CoreCodeCamp.Controllers
             }
         }
 
+        // GET http://localhost:6600/api/camps/ATL2018
         [HttpGet("{moniker}")]
         public async Task<ActionResult<CampModel>> Get(string moniker)
         {
@@ -49,6 +54,26 @@ namespace CoreCodeCamp.Controllers
             catch (System.Exception)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+        }
+
+        // GET http://localhost:6600/api/camps/search?includeTalks=true&theDate=2018-10-18
+        [HttpGet("search")]
+        public async Task<ActionResult<CampModel[]>> SearchByDate(DateTime theDate, bool includeTalks = false)
+        {
+            try
+            {
+                var results= await _repository.GetAllCampsByEventDate(theDate, includeTalks);
+
+                if (!results.Any()) 
+                    return NotFound();
+
+                return _mapper.Map<CampModel[]>(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+                throw;
             }
         }
     }

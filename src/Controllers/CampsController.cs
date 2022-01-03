@@ -67,16 +67,16 @@ namespace CoreCodeCamp.Controllers
         {
             try
             {
-                var results= await _repository.GetAllCampsByEventDate(theDate, includeTalks);
+                var results = await _repository.GetAllCampsByEventDate(theDate, includeTalks);
 
-                if (!results.Any()) 
+                if (!results.Any())
                     return NotFound();
 
                 return _mapper.Map<CampModel[]>(results);
             }
             catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");                ;
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure"); ;
             }
         }
 
@@ -94,6 +94,12 @@ namespace CoreCodeCamp.Controllers
         {
             try
             {
+                var existing = await _repository.GetCampAsync(model.Moniker);
+                if (existing != null)
+                {
+                    return BadRequest("Moniker in Use");
+                }
+
                 var location = _linkGenerator.GetPathByAction("Get", "Camps", new { moniker = model.Moniker });
 
                 if (string.IsNullOrWhiteSpace(location))
@@ -103,7 +109,7 @@ namespace CoreCodeCamp.Controllers
                 // Create a new Camp
 
                 var camp = _mapper.Map<Camp>(model);
-                _repository.Add(camp);  
+                _repository.Add(camp);
 
                 if (await _repository.SaveChangesAsync())
                 {

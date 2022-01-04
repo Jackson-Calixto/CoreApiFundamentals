@@ -1,10 +1,5 @@
 ﻿using AutoMapper;
 using CoreCodeCamp.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoreCodeCamp.Data
 {
@@ -16,6 +11,8 @@ namespace CoreCodeCamp.Data
                 .ForMember(c => c.Venue, o => o.MapFrom(m => m.Location.VenueName));
 
             this.CreateMap<CampModel, Camp>();
+            this.CreateMap<CampModel, LocationModel>();
+            this.CreateMap<Location, LocationModel>();
             this.CreateMap<Talk, TalkModel>();
             this.CreateMap<Speaker, SpeakerModel>();
         }
